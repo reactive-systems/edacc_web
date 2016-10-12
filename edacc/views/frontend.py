@@ -786,7 +786,7 @@ def experiment_list_stats_ajax(database, experiment_id):
     num_solver_configs = experiment.get_num_solver_configs(db)
 
     experiment_running = db.session.query(db.ExperimentResult.Experiment_idExperiment,
-                                          func.count(db.ExperimentResult)) \
+                                          func.count(db.ExperimentResult.Experiment_idExperiment)) \
                              .filter_by(status=STATUS_RUNNING) \
                              .filter_by(experiment=experiment) \
                              .filter(func.timestampdiff(sqla_text("SECOND"),
@@ -795,7 +795,7 @@ def experiment_list_stats_ajax(database, experiment_id):
                              .filter(db.ExperimentResult.priority >= 0).first()[1] > 0
 
     experiment_crashes = db.session.query(db.ExperimentResult.Experiment_idExperiment,
-                                          func.count(db.ExperimentResult)) \
+                                          func.count(db.ExperimentResult.Experiment_idExperiment)) \
                              .filter_by(experiment=experiment) \
                              .filter(db.ExperimentResult.status <= -2) \
                              .filter(db.ExperimentResult.priority >= 0).first()[1] > 0
@@ -841,7 +841,7 @@ def experiment_stats_ajax(database, experiment_id):
     num_solver_configs = experiment.get_num_solver_configs(db)
 
     experiment_running = db.session.query(db.ExperimentResult.Experiment_idExperiment,
-                                          func.count(db.ExperimentResult)) \
+                                          func.count(db.ExperimentResult.Experiment_idExperiment)) \
                              .filter_by(status=STATUS_RUNNING) \
                              .filter_by(experiment=experiment) \
                              .filter(func.timestampdiff(sqla_text("SECOND"),
@@ -850,7 +850,7 @@ def experiment_stats_ajax(database, experiment_id):
                              .filter(db.ExperimentResult.priority >= 0).first()[1] > 0
 
     experiment_crashes = db.session.query(db.ExperimentResult.Experiment_idExperiment,
-                                          func.count(db.ExperimentResult)) \
+                                          func.count(db.ExperimentResult.Experiment_idExperiment)) \
                              .filter_by(experiment=experiment) \
                              .filter(db.ExperimentResult.status <= -2) \
                              .filter(db.ExperimentResult.priority >= 0).first()[1] > 0

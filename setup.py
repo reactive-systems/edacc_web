@@ -20,7 +20,7 @@ setup(
         "Flask-KVSession",
         "flask-mail",
         "PyLZMA>=0.4.2",
-        "PIL>=1.1.7",
+        "pillow>=1.1.7",
         "scipy>=0.9.0",
         "scikits.learn==0.8.1",
         "numpy>=1.5.1",
